@@ -1,0 +1,63 @@
+{
+  "mempelai": {
+    "wanita": {
+      "namaPanggilan": "Elyana",
+      "namaLengkap": "Elyana Azkiya Nur",
+      "namaOrangTua": "Putri dari Bapak Nasrudin Hatta & Ibu Elma Muna",
+      "foto": "https://picsum.photos/400/600?random=11"
+    },
+    "pria": {
+      "namaPanggilan": "Syahril",
+      "namaLengkap": "Syahril Rendra Backhtiar",
+      "namaOrangTua": "Putra dari Bapak Fulan & Ibu Fulanah",
+      "foto": "https://picsum.photos/400/600?random=12"
+    }
+  },
+  "acara": {
+    "tanggalTeks": "MINGGU, 28 Juni 2026",
+    "tanggalCountdown": "Jun 28, 2026 08:00:00"
+  },
+  "streaming": {
+    "pesan": "Saksikan momen kebahagiaan kami secara langsung melalui live streaming berikut:",
+    "url": "https://www.youtube.com/embed/ScMzIvxBSi4"
+  },
+  "backgroundMobile": "https://picsum.photos/400/600?random=12",
+  "gallery": [
+    { "type": "video", "url": "https://www.youtube.com/embed/ScMzIvxBSi4" },
+    { "type": "image", "url": "https://picsum.photos/400/600?random=2", "orientation": "portrait" },
+    { "type": "image", "url": "https://picsum.photos/400/600?random=3", "orientation": "portrait" },
+    { "type": "image", "url": "https://picsum.photos/600/400?random=4", "orientation": "landscape" },
+    { "type": "image", "url": "https://picsum.photos/400/600?random=5", "orientation": "portrait" },
+    { "type": "image", "url": "https://picsum.photos/400/600?random=6", "orientation": "portrait" },
+    { "type": "image", "url": "https://picsum.photos/600/400?random=7", "orientation": "landscape" }
+  ],
+  "gifts": [
+    {
+      "type": "bank",
+      "bankName": "BNI",
+      "logo": "image/BNI.png",
+      "accountNumber": "12345678901",
+      "accountName": "ELYANA AZKIYA NUR"
+    },
+    {
+      "type": "bank",
+      "bankName": "BCA",
+      "logo": "image/bca-1.webp",
+      "accountNumber": "12345678966",
+      "accountName": "ELYANA AZKIYA NUR"
+    },
+    {
+      "type": "address",
+      "icon": "fa-solid fa-gift",
+      "recipient": "Elyana",
+      "phone": "08123456789",
+      "addressText": "Jl. Alamat Penerima Kado No. 123, Kota, Provinsi"
+    }
+  ],
+  "penutup": {
+    "judul": "Terima Kasih",
+    "pesan": "Atas kehadiran dan do'a restu dari Bapak/Ibu/Saudara/i sekalian, kami mengucapkan Terima Kasih.",
+    "subJudul": "Kami Yang Berbahagia",
+    "bgImage": "https://picsum.photos/600/900?random=100"
+  }
+}
