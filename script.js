@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- 5. RSVP Form to Google Sheets ---
     // ---> GANTI URL INI DENGAN URL WEB APP MILIK ANDA <---
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxFVEEVAQbueX-GwUzJYJuqIQiBrVla3rrjjJjYOwntgVbPPvgquFfpLWuQbWmaY0m-/exec'; 
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxVmci1q0Jvqo3euxRq2rvuLQrf3jXgiBqI42mhISzcTw50DAhlIFOc2KhZWAhXJ0Ck/exec'; 
     
     const form = document.forms['submit-to-google-sheet'];
     const btnSubmit = document.getElementById('btn-submit');
