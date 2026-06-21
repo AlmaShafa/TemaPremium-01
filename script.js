@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-   // --- 0. Menangani Nama Tamu dari URL ---
+    // --- 0. Menangani Nama Tamu dari URL ---
     const urlParams = new URLSearchParams(window.location.search);
     const guestName = urlParams.get('to'); 
 
@@ -279,17 +279,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const name = document.getElementById('name').value;
                 const attendance = document.getElementById('attendance').value;
-                const jumlah = document.getElementById('jumlah').value;
                 const message = document.getElementById('message').value;
-
-                let statusTeks = attendance;
-                if (attendance === 'Hadir' && jumlah && jumlah !== "0") {
-                    statusTeks += ` (${jumlah} Orang)`;
-                }
 
                 const wishItem = document.createElement('div');
                 wishItem.classList.add('wish-item');
-                wishItem.innerHTML = `<h4>${name} <span><i class="fa-solid fa-check"></i> ${statusTeks}</span></h4><p>${message}</p>`;
+                wishItem.innerHTML = `<h4>${name} <span><i class="fa-solid fa-check"></i> ${attendance}</span></h4><p>${message}</p>`;
 
                 wishesList.insertBefore(wishItem, wishesList.firstChild);
                 
