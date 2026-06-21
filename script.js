@@ -1,15 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // --- 0. Menangani Nama Tamu dari URL ---
-const urlParams = new URLSearchParams(window.location.search);
-const guestName = urlParams.get('to'); // Mengambil data dari ?to=NamaTamu
+   // --- 0. Menangani Nama Tamu dari URL ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('to'); 
 
-const elGuest = document.getElementById('guest-name');
+    const elGuest = document.getElementById('guest-name');
+    const inputRsvpName = document.getElementById('name'); // Mengambil elemen kolom input nama di form RSVP
 
-// Jika ada parameter 'to' di URL, maka ganti teksnya
-if (elGuest && guestName) {
-    elGuest.innerText = guestName.replace(/_/g, ' '); // Mengganti underscore dengan spasi
-}
+    if (guestName) {
+        // Mengganti simbol underscore atau %20 menjadi spasi
+        const namaRapi = guestName.replace(/_/g, ' '); 
+        
+        // 1. Mengganti teks di Guest Card (Cover)
+        if (elGuest) {
+            elGuest.innerText = namaRapi;
+        }
+        
+        // 2. Memasukkan nama otomatis ke dalam form pengisian RSVP
+        if (inputRsvpName) {
+            inputRsvpName.value = namaRapi;
+            
+            // Opsional: Anda bisa menambahkan kode di bawah ini jika ingin kolom namanya 
+            // 'dikunci' (tidak bisa diedit oleh tamu). Jika ingin tamu tetap bisa mengeditnya, hapus saja baris ini.
+            // inputRsvpName.setAttribute('readonly', 'true'); 
+        }
+    }
     
     // --- 1. UI Toggle (Buka Undangan & Musik) ---
     const btnOpen = document.getElementById('openInvitation');
