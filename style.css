@@ -28,12 +28,14 @@
 body { 
     font-family: var(--font-body); 
     background: #e9ecef; 
-    color: var(--text-dark); 
+    color: var(--text-light); 
     line-height: 1.6; 
     display: flex; 
     justify-content: flex-end; 
-    height: 100dvh; 
+    height: 100vh; /* Fallback browser lama */
+    height: calc(var(--vh, 1vh) * 100); /* Menggunakan tinggi presisi dari JS */
     overflow: hidden; 
+    margin: 0;
 }
 
 .hidden { display: none !important; }
@@ -56,14 +58,14 @@ body {
 .mobile-container {
     width: 100%; 
     max-width: 480px; 
-    height: 100dvh;
+    height: 100vh; /* Fallback browser lama */
+    height: calc(var(--vh, 1vh) * 100); /* Menggunakan tinggi presisi dari JS */
     
-    /* Pengaturan Background */
+    /* Pengaturan Background Utama */
     background: var(--bg-gradient); 
     background-size: cover;          
     background-position: center;     
     background-repeat: no-repeat;    
-    /* background-attachment: fixed; -> SENGAJA DIHAPUS agar tidak glitch di HP */
     
     position: relative;
     overflow-y: auto; 
