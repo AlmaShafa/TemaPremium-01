@@ -1,14 +1,14 @@
 {
   "mempelai": {
     "wanita": {
-      "namaPanggilan": "Elyana",
-      "namaLengkap": "Elyana Azkiya Nur",
-      "namaOrangTua": "Putri dari Bapak Nasrudin Hatta & Ibu Elma Muna",
+      "namaPanggilan": "Fatimah",
+      "namaLengkap": "Fatimah Az Zahra",
+      "namaOrangTua": "Putri dari Bapak Fulan & Ibu Fulanah",
       "foto": "https://picsum.photos/400/600?random=11"
     },
     "pria": {
-      "namaPanggilan": "Syahril",
-      "namaLengkap": "Syahril Rendra Backhtiar",
+      "namaPanggilan": "Ali",
+      "namaLengkap": "Ali Rajab",
       "namaOrangTua": "Putra dari Bapak Fulan & Ibu Fulanah",
       "foto": "https://picsum.photos/400/600?random=12"
     }
@@ -37,19 +37,19 @@
       "bankName": "BNI",
       "logo": "image/BNI.png",
       "accountNumber": "12345678901",
-      "accountName": "ELYANA AZKIYA NUR"
+      "accountName": "Fatimah Az Zahra"
     },
     {
       "type": "bank",
       "bankName": "BCA",
       "logo": "image/bca-1.webp",
       "accountNumber": "12345678966",
-      "accountName": "ELYANA AZKIYA NUR"
+      "accountName": "Fatimah Az Zahra"
     },
     {
       "type": "address",
       "icon": "fa-solid fa-gift",
-      "recipient": "Elyana",
+      "recipient": "Fatimah Az Zahra",
       "phone": "08123456789",
       "addressText": "Jl. Alamat Penerima Kado No. 123, Kota, Provinsi"
     }
