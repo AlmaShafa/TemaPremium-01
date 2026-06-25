@@ -28,7 +28,7 @@
 body { 
     font-family: var(--font-body); 
     background: #e9ecef; 
-    color: var(--text-light); 
+    color: var(--text-dark); 
     line-height: 1.6; 
     display: flex; 
     justify-content: flex-end; 
@@ -78,7 +78,7 @@ main { position: relative; width: 100%; min-height: 100%; }
 /* --- Cover Overlay Dalam Container --- */
 .cover-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 999;
-    background-image: url('image/Mobile.png'); 
+    background-image: url('image/mobile.png'); 
     background-size: cover; background-position: center;
     display: flex; flex-direction: column; justify-content: space-between;
     transition: transform 0.8s ease-in-out, opacity 0.8s;
