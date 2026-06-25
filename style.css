@@ -89,6 +89,8 @@ main { position: relative; width: 100%; min-height: 100%; }
 .cover-names { font-family: var(--font-script); font-size: 40px; margin-bottom: 10px; }
 .guest-card { background: var(--card-bg); color: var(--text-dark); padding: 20px; border-radius: 25px; margin: 0 auto; width: 90%; max-width: 380px; backdrop-filter: blur(8px); }
 .guest-card p { font-size: 14px; font-weight: 600; margin-bottom: 15px; }
+.guest-name { font-size: 20px; /* Bikin lebih besar */font-weight: bold; /* Bikin tebal agar kontras */color: #333333;
+}
 
 /* Buttons */
 .btn-primary { background-color: var(--btn-color); color: #fff; border: none; padding: 10px 25px; border-radius: 20px; font-family: var(--font-body); font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 13px; }
