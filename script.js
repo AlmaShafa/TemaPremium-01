@@ -206,15 +206,23 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderGallery(galleryData) {
         const container = document.getElementById('gallery-container');
         if(!container) return;
+        
         galleryData.forEach(item => {
             if (item.type === 'video') {
-                container.innerHTML += `<div class="video-item"><iframe src="${item.url}" allowfullscreen></iframe></div>`;
+                // Menambahkan class 'reveal' pada div video
+                container.innerHTML += `<div class="video-item reveal"><iframe src="${item.url}" allowfullscreen></iframe></div>`;
             } else {
-                // Menangkap class orientation portrait atau landscape dari data.json
-                let imgClass = item.orientation === 'landscape' ? 'landscape' : '';
+                // Menambahkan class 'reveal' gabungan dengan orientasi landscape/portrait
+                let imgClass = item.orientation === 'landscape' ? 'landscape reveal' : 'reveal';
                 container.innerHTML += `<img src="${item.url}" class="${imgClass}" alt="Gallery">`;
             }
         });
+
+        // PANGGIL ULANG OBSERVER DI SINI
+        // Agar elemen gambar yang baru saja dibuat ikut terdeteksi oleh animasi scroll
+        if (typeof triggerObserver === 'function') {
+            triggerObserver();
+        }
     }
 
     function renderGifts(giftsData) {
