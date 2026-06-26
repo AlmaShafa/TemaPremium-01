@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
             renderGallery(data.gallery);
             renderGifts(data.gifts);
             renderMobileBackground(data.backgroundMobile);
+            renderOurStory(data.ourStory); // <--- TAMBAHKAN BARIS INI
         })
         .catch(error => console.error("Gagal load JSON. Buka via Live Server!", error));
         // --- Tulis fungsinya di bagian bawah bersama fungsi render lainnya ---
@@ -139,6 +140,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         document.querySelectorAll('.event-date-text').forEach(el => el.innerText = data.acara.tanggalTeks);
+    }
+    function renderOurStory(storyData) {
+        const container = document.getElementById('story-container');
+        if (!container || !storyData) return;
+
+        // Render semua item cerita terlebih dahulu
+        storyData.forEach((item) => {
+            container.innerHTML += `
+                <div class="story-item reveal">
+                    <div class="story-date">${item.tanggal}</div>
+                    <div class="story-title">${item.judul}</div>
+                    <div class="story-desc">${item.cerita}</div>
+                </div>
+            `;
+        });
+
+        // PANGGIL ULANG OBSERVER DI SINI
+        // Agar elemen '.story-item.reveal' yang baru saja dibuat di atas ikut terdeteksi oleh animasi scroll
+        if (typeof triggerObserver === 'function') {
+            triggerObserver();
+        }
     }
 
     function renderStreaming(data) {
