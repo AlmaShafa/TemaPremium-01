@@ -146,7 +146,7 @@ main { position: relative; width: 100%; min-height: 100%; }
 
 /* Save The Date */
 .countdown { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
-.time-box { background: #ffffffba; padding: 10px; border-radius: 8px; width: 60px; backdrop-filter: blur(4px); }
+.time-box { background: #f4a5a554; padding: 10px; border-radius: 8px; width: 60px; backdrop-filter: blur(4px); }
 .time-box span { font-size: 20px; font-weight: 600; }
 .time-box p { font-size: 11px; margin-top: 3px; }
 .event-card-container { background: var(--card-bg); color: var(--text-dark); border-radius: 15px; padding: 30px 20px; margin-top: 30px; }
