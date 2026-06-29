@@ -189,7 +189,7 @@ main { position: relative; width: 100%; min-height: 100%; }
 .gift-container p { font-size: 14px; margin-bottom: 20px; }
 .gift-list { margin-top: 20px; display: flex; flex-direction: column; gap: 15px; }
 
-.bank-card { background: linear-gradient(135deg, #e47c059e 0%, #f9d789c1 100%); border-radius: 12px; padding: 20px; position: relative; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.bank-card { background: linear-gradient(135deg, #ff64599d 0%, #ff7e7eab 100%); border-radius: 12px; padding: 20px; position: relative; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
 .bank-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
 .chip-icon { width: 35px; height: 25px; border-radius: 4px; display: inline-block; background-image: url('image/Chip.webp');background-size: cover;background-position: center; }
 .bank-logo-img { height: 20px; object-fit: contain; }
