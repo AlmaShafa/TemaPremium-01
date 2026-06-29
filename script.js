@@ -13,24 +13,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const guestName = urlParams.get('to'); 
 
     const elGuest = document.getElementById('guest-name');
-    const inputRsvpName = document.getElementById('name'); // Mengambil elemen kolom input nama di form RSVP
+    const inputRsvpName = document.getElementById('name');
 
     if (guestName) {
-        // Mengganti simbol underscore atau %20 menjadi spasi
         const namaRapi = guestName.replace(/_/g, ' '); 
-        
-        // 1. Mengganti teks di Guest Card (Cover)
         if (elGuest) {
             elGuest.innerText = namaRapi;
         }
-        
-        // 2. Memasukkan nama otomatis ke dalam form pengisian RSVP
         if (inputRsvpName) {
             inputRsvpName.value = namaRapi;
-            
-            // Opsional: Anda bisa menambahkan kode di bawah ini jika ingin kolom namanya 
-            // 'dikunci' (tidak bisa diedit oleh tamu). Jika ingin tamu tetap bisa mengeditnya, hapus saja baris ini.
-            // inputRsvpName.setAttribute('readonly', 'true'); 
         }
     }
     
@@ -61,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 mainContent.classList.remove('hidden');
                 adjustMusicBtn();
                 
-                // Memicu trigger awal observer untuk animasi scroll (reveal) pertama
                 triggerObserver();
 
                 if (bgMusic) {
@@ -92,16 +82,16 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             renderWeddingInfo(data);
-            renderStreaming(data); // Fungsi render Live Stream baru
+            renderStreaming(data);
             renderPenutup(data);
             startCountdown(data.acara.tanggalCountdown);
             renderGallery(data.gallery);
             renderGifts(data.gifts);
             renderMobileBackground(data.backgroundMobile);
-            renderOurStory(data.ourStory); // <--- TAMBAHKAN BARIS INI
+            renderOurStory(data.ourStory);
         })
         .catch(error => console.error("Gagal load JSON. Buka via Live Server!", error));
-        // --- Tulis fungsinya di bagian bawah bersama fungsi render lainnya ---
+        
     function renderMobileBackground(bgImageUrl) {
         if (!bgImageUrl) return;
         const mobileContainer = document.querySelector('.mobile-container');
@@ -128,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
         updateText('full-pria', data.mempelai.pria.namaLengkap);
         updateText('ortu-pria', data.mempelai.pria.namaOrangTua);
 
-        // Mengubah gambar source secara dinamis berdasarkan data JSON
         const imgWanita = document.getElementById('foto-wanita');
         if (imgWanita && data.mempelai.wanita.foto) {
             imgWanita.src = data.mempelai.wanita.foto;
@@ -141,11 +130,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.querySelectorAll('.event-date-text').forEach(el => el.innerText = data.acara.tanggalTeks);
     }
+    
     function renderOurStory(storyData) {
         const container = document.getElementById('story-container');
         if (!container || !storyData) return;
 
-        // Render semua item cerita terlebih dahulu
         storyData.forEach((item) => {
             container.innerHTML += `
                 <div class="story-item reveal">
@@ -156,8 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         });
 
-        // PANGGIL ULANG OBSERVER DI SINI
-        // Agar elemen '.story-item.reveal' yang baru saja dibuat di atas ikut terdeteksi oleh animasi scroll
         if (typeof triggerObserver === 'function') {
             triggerObserver();
         }
@@ -209,17 +196,13 @@ document.addEventListener("DOMContentLoaded", () => {
         
         galleryData.forEach(item => {
             if (item.type === 'video') {
-                // Menambahkan class 'reveal' pada div video
                 container.innerHTML += `<div class="video-item reveal"><iframe src="${item.url}" allowfullscreen></iframe></div>`;
             } else {
-                // Menambahkan class 'reveal' gabungan dengan orientasi landscape/portrait
                 let imgClass = item.orientation === 'landscape' ? 'landscape reveal' : 'reveal';
                 container.innerHTML += `<img src="${item.url}" class="${imgClass}" alt="Gallery">`;
             }
         });
 
-        // PANGGIL ULANG OBSERVER DI SINI
-        // Agar elemen gambar yang baru saja dibuat ikut terdeteksi oleh animasi scroll
         if (typeof triggerObserver === 'function') {
             triggerObserver();
         }
@@ -271,7 +254,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // --- 5. RSVP Form to Google Sheets ---
-    // ---> GANTI URL INI DENGAN URL WEB APP MILIK ANDA <---
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxVmci1q0Jvqo3euxRq2rvuLQrf3jXgiBqI42mhISzcTw50DAhlIFOc2KhZWAhXJ0Ck/exec'; 
     
     const form = document.forms['submit-to-google-sheet'];
@@ -319,9 +301,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 const attendance = document.getElementById('attendance').value;
                 const message = document.getElementById('message').value;
 
+                // Logika SVG Badge Verified (Saat form baru saja disubmit)
+                let iconHTML = '';
+                if (attendance === 'Hadir') {
+                    // Badge Verified Centang (Biru)
+                    iconHTML = `<svg aria-label="Hadir" fill="#0095F6" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>`;
+                } else {
+                    // Badge Verified Silang (Merah)
+                    iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm6.202 10.706 2.2 2.2-6.2 6.2 6.2 6.2-2.2 2.2-6.2-6.2-6.2 6.2-2.2-2.2 6.2-6.2-6.2-6.2 2.2-2.2 6.2 6.2 6.2-6.2Z" fill-rule="evenodd"></path></svg>`;
+                }
+
                 const wishItem = document.createElement('div');
                 wishItem.classList.add('wish-item');
-                wishItem.innerHTML = `<h4>${name} <span><i class="fa-solid fa-check"></i> ${attendance}</span></h4><p>${message}</p>`;
+                wishItem.innerHTML = `<h4>${name} <span style="margin-left: 5px;">${iconHTML}</span></h4><p>${message}</p>`;
 
                 wishesList.insertBefore(wishItem, wishesList.firstChild);
                 
@@ -352,14 +344,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 countWishes.innerText = totalUcapan;
 
                 data.forEach(item => {
-                    let statusTeks = item.kehadiran;
-                    if (item.kehadiran === 'Hadir' && item.jumlah && item.jumlah !== "0") {
-                        statusTeks += ` (${item.jumlah} Orang)`;
+                    // Logika SVG Badge Verified (Saat data diload)
+                    let iconHTML = '';
+                    if (item.kehadiran === 'Hadir') {
+                        // Badge Verified Centang (Biru)
+                        iconHTML = `<svg aria-label="Hadir" fill="#0095F6" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg>`;
+                    } else {
+                        // Badge Verified Silang (Merah)
+                        iconHTML = `<svg aria-label="Tidak Hadir" fill="#e74c3c" height="16" role="img" viewBox="0 0 40 40" width="16" style="vertical-align: middle;"><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm6.202 10.706 2.2 2.2-6.2 6.2 6.2 6.2-2.2 2.2-6.2-6.2-6.2 6.2-2.2-2.2 6.2-6.2-6.2-6.2 2.2-2.2 6.2 6.2 6.2-6.2Z" fill-rule="evenodd"></path></svg>`;
                     }
 
                     const wishItem = document.createElement('div');
                     wishItem.classList.add('wish-item');
-                    wishItem.innerHTML = `<h4>${item.nama} <span><i class="fa-solid fa-check"></i> ${statusTeks}</span></h4><p>${item.pesan}</p>`;
+                    wishItem.innerHTML = `<h4>${item.nama} <span style="margin-left: 5px;">${iconHTML}</span></h4><p>${item.pesan}</p>`;
                     
                     wishesList.appendChild(wishItem);
                 });
@@ -374,27 +371,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-function copyText(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        alert("Berhasil disalin: " + text);
-    }).catch(err => console.error('Gagal menyalin: ', err));
-}
-
-    // --- 5. Animasi Scroll (Reveal) ---
-    function triggerObserver() {
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 }); // Akan muncul jika elemen sudah terlihat 10%
-        
-        reveals.forEach(reveal => {
-            observer.observe(reveal);
+// --- 5. Animasi Scroll (Reveal) ---
+function triggerObserver() {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
         });
-    }
+    }, { threshold: 0.1 }); 
+    
+    reveals.forEach(reveal => {
+        observer.observe(reveal);
+    });
+}
 
 function copyText(text) {
     navigator.clipboard.writeText(text).then(() => {
