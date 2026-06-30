@@ -199,7 +199,7 @@ main { position: relative; width: 100%; min-height: 100%; }
 
 /* Styling Header Buka/Tutup Ucapan */
 .ucapan-header { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; padding-bottom: 15px; }
-.ucapan-count { font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 8px; margin: 0; color: rgb(2, 61, 62)}
+.ucapan-count { font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 8px; margin: 0; color: #861429 }
 .btn-toggle-small { background: var(--btn-color); color: white; border: none; padding: 6px 15px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; transition: 0.3s; font-family: var(--font-body); }
 .btn-toggle-small:hover { background: var(--btn-hover); }
 
